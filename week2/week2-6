@@ -1,0 +1,14 @@
+# 이름과 나이를 입력 받아 성인인지 미성년자인지 판단하기 
+# 성인의 기준의 나이는 20살
+
+Name = input("이름 입력")
+Age = int(input("나이 입력"))
+
+if Age >=20:
+    print(f'{Name}님은 성인')
+elif 0 < Age and Age < 20:
+    print(f'{Name}님은 미성년자')
+else:
+    print("잘못 입력하셨습니다")
+
+# elif 문에서 음수가 들어올 수 있으므로 0보다 크다는 조건을 넣어줌
