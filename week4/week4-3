@@ -1,0 +1,17 @@
+import random
+
+a = random.randint(1, 101) # 랜덤 숫자
+b = int(input('기회: ')) # 기회
+
+for i in range(1, b+1):
+    n = int(input('숫자 입력: '))
+    if n < a:
+        print('UP')
+    elif n > a:
+        print('DOWN')
+    
+    else:
+        print('정답')
+        break
+    
+print('끝~')
