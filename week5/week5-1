@@ -1,0 +1,9 @@
+# https://www.acmicpc.net/problem/1076
+
+colors = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet','grey', 'white']
+
+a = colors.index(input('a 입력'))  # 색상을 입력받고 colors 리스트에서 몇번째 인덱스인지
+b = colors.index(input('b 입력'))
+c = 10**colors.index(input('c 입력'))
+
+print(int(str(a) + str(b)) * c)  # a와 b를 문자열로 붙이고 숫자로 만듬
