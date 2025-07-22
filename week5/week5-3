@@ -1,0 +1,12 @@
+# https://www.acmicpc.net/problem/10807
+
+N = int(input('정수 개수'))
+a = list(map(int, input('숫자 N개 입력').split()))
+v = int(input('찾을 숫자'))
+
+if N == len(a):
+    count = 0
+    for i in range(len(a)):
+        if a[i] == v:
+            count += 1
+    print(f'{count} 개')
