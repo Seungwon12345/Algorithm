@@ -1,0 +1,336 @@
+튜플, 문자열, 문자열 리스트 최댓값 구하기
+
+```python
+# 각 배열 원소의 최댓값을 구해서 출력하기(튜플, 문자열, 문자열 리스트)
+# 앞에서 정의해둔 max_of() 함수를 임포트 하여 사용
+from max import max_of
+
+t = (4, 7, 5.6, 2, 3.14, 1)
+s = 'string'
+a = ['DTS', 'ACC', 'FLAC']
+
+print(f'{t}의 최댓값은 {max_of(t)}이다')
+print(f'{s}의 최댓값은 {max_of(s)}이다')
+print(f'{a}의 최댓값은 {max_of(a)}이다')
+```
+
+튜플 t는 정수, 실수 원소가 섞여 있지만 최댓값 7 출력
+
+s는 string 이라는 문자 중 가장 큰 문자 코드 t 출력
+
+a는 문자열 리스트 중 사전 순으로 가장 큰 문자열 FLAC 출력
+
+리스트, 튜플 동일성 판단
+
+```python
+lst1 = [1, 2, 3]
+lst2 = [1, 2, 3]
+lst1 is lst2 
+=> False
+```
+
+lst1과 lst2는 같은 리스트를 생성한 것 처럼 보이나  리터럴(고정된 값)이 아니여서 같지 않음(식별번호가 다름)
+
+리스트, 튜플 대입
+
+```python
+lst1 = [1, 2, 3, 4]
+lst2 = lst2
+lst1 is lst2
+=> True
+lst1[2] = 9
+lst1 
+=> [1, 2, 9, 4]
+lst2 
+=> [1, 2, 9, 4]
+```
+
+- 리스트 2개를 선언하여 서로 대입하면 원소 자체 복사X, 대입은 값을 참조
+- 리스트나 튜플 자체를 대입할 수 있으나 원소에는 대입X
+
+```python
+# 리스트의 모든 원소 스캔(원소 수를 미리 파악)
+
+x = ['John','Geo', 'Paul']
+
+for i in range(len(x)):
+		print(f'x[{i}] = {x[i]}')
+		
+		
+=> x[0] = John
+	 x[1] = Geo 
+   x[2] = Paul
+ 
+```
+
+- enumerate() 함수 ⇒ 인덱스와 원소를 짝지어 튜플로 꺼냄 (0, ‘John’), (1, ‘Geo’), (2, ‘Paul’)
+
+```python
+# 리스트의 모든 원소 enumerate() 함수로 스캔
+
+x = ['John','Geo', 'Paul']
+
+for i, name in enumerate(x):
+		print(f'[{i}] = {name})
+		
+
+=> x[0] = John
+	 x[1] = Geo 
+   x[2] = Paul
+```
+
+```python
+# 리스트의 모든 원소 enumerate() 함수로 스캔(1부터 카운트)
+
+x = ['John','Geo', 'Paul']
+
+for i, name in enumerate(x, 1):
+		print(f'[{i}] = {name})
+		
+
+=> x[1] = John
+	 x[2] = Geo 
+   x[3] = Paul
+```
+
+```python
+# 리스트의 모든 원소 스캔(인덱스 값 사용X)
+
+x = ['John','Geo', 'Paul']
+
+for i in x:
+		print(i)
+		
+
+=> John
+	 Geo 
+   Paul
+```
+
+- x = [ ] → x = ( ) 이런 형태로 수정한 것만으로 스캔 가능
+
+이터러블(반복가능)
+
+- 문자열, 리스트, 튜플, 집합, 딕셔너리 등의 자료형 객체는 모두 이터러블(반복가능)함
+- 이터러블 객체는 원소 하나씩 꺼내는 구조
+- iter( ) 의 인수로 전달하면 객체의 이터레이터(반복자) 반환, 이터레이터(데이터 나열을 표현하는 객체)
+- 이터레이터의 __next__ 함수호출, next( ) 함수에 이터레이터 전달 → 원소를 순차적으로 꺼낼 수 있음
+- 꺼낼 원소가 더 이상 없으면 StopIteration 예외 발생
+
+배열 원소 역순 정렬
+
+```python
+for i in range(n // 2):
+		a[i]와 a[n - i - 1] 값 교환
+		ex) n = 6, a[0]값과 a[5]값 교환
+```
+
+```python
+# 뮤터블 시퀀스 원소 역순 정렬
+
+from typing import Any, MutableSequence
+
+def reverse_arr(a: MutableSequence) -> None:
+    """뮤터블 시퀀스 a의 원소 역순 정렬"""
+    n = len(a)
+    for i in range(n // 2):
+        a[i], a[n - i - 1] = a[n - i - 1], a[i]
+
+if __name__ == '__name__':
+    print('배열 원소 역순 정렬')
+    nx = int(input('원소 수 입력'))
+    x = [None] * nx # 원소 수가 nx인 리스트 생성(입력받은 개수만큼 빈 리스트 생성)
+
+    for i in range(nx):
+        x[i] = int(input(f'x[{i}]값 입력'))
+
+    reverse_arr(X) # x 역순 정렬
+
+    print('배열 원소 역순 정렬함')
+    for i in range(nx):
+        print(f'x[{i}] = {x[i]}')
+        
+        
+
+ex)배열 원소 역순 정렬
+원소 수 입력5 
+x[0]값 입력94
+x[1]값 입력953
+x[2]값 입력153
+x[3]값 입력2
+x[4]값 입력32
+배열 원소 역순 정렬함
+x[0] = 32
+x[1] = 2
+x[2] = 153
+x[3] = 953
+x[4] = 94        
+```
+
+- 뮤터블 시퀀스 - 변경 가능한 순서 있는 자료형
+- def reverse_arr(a: MutableSequence) -> None: ( 함수의 첫번째 인자는 a 인데 MutableSequence 타입 이여야 함, a는 변경 가능한 시퀀스 / →None:  어떤 값도 반환X a자체를 변경함)
+- reverse_arr( ) ⇒ 인수로 입력 받은 배열 a 원소를 역순으로 정렬
+- if **name** == '**main**': → 블록안의 코드는 현재 파이썬 스크립트가 직접 실행될 때만 동작
+- 이후 reverse_arr( ) 호출해 역순으로 정렬 후 원소 값 출력
+- list.verse( ), 슬라이싱[ : : -1]을 이용하는 방법도 있음
+
+리스트 역순 정렬
+
+reverse( ) 함수 사용 
+
+```python
+x.reverse() # 리스트 x의 원소 역순 정렬
+
+y = list(reversed(x)) # 리스트 x의 원소를 역순 정렬하여 y에 대입
+```
+
+기수 변환(n진수)
+
+10 진수 정수 → n진수 : 정수를 n으로 나눈 나머지를 구하는 동시에 몫을 반복해서 나눠야함(몫이 0이 될때까지 반복)
+
+```python
+59 -> 2진수(111011)
+
+59 // 2 = 29, 59 % 2 = 1
+29 // 2 = 14, 29 % 2 = 1
+14 // 2 = 7, 14 % 2 = 0
+7 // 2 = 3, 7 % 2 = 1
+3 // 2 = 1, 3 % 2 = 1
+1 // 2 = 0, 1 % 2 = 1
+
+=> 2진수 (110111)
+```
+
+```python
+# 10진수 정숫값 입력받아 2~36잔수로 변환하여 출력
+
+def card_conv(x: int, r:int) -> str:
+    """정숫값 x를 r진수로 변환 후 그 수를 나타내는 문자열 반환"""
+
+    d = ''         # 변환 후 문자열
+    dchar = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    while x > 0:
+        d += dchar[x % r]    # 해당하는 문자를 꺼내 결합
+        x //= r
+
+        return d[::-1]  # 역순 변환
+        
+
+ex) 59 -> 16진수(B3)
+59 // 16 = 3, 59 % 16 = 11(B)
+3 // 16 = 0, 3 % 16 = 3
+
+=> 16진수(B3)  
+```
+
+```python
+if __name__ == '__main__':
+    print('10진수를 n진수 변환')
+
+    while True:
+        while True:  # 음이 아닌 정수 입력 받음
+            no = int(input('음이 아닌 변환할 값 입력'))
+            if no > 0:
+                break
+
+        while True:  # 2~36진수 입력 받음
+            cd = int(input('어떤 진수로 변환할지'))
+            if 2 <=  cd <= 16:
+                break
+
+        print(f'{cd}진수 {no}값은 {card_conv(no, cd)}')
+
+        retry = input( "한번 더 ?(Y / N)")
+        if retry in {'N', 'n'}:
+            break
+```
+
+```python
+# 10진수 정숫값 입력받아 2~36진수로 변환하여 출력
+
+def card_conv(x: int, r:int) -> str:
+    """정숫값 x를 r진수로 변환 후 그 수를 나타내는 문자열 반환"""
+
+    d = ''           # 변환 후 문자열
+    dchar = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    n = len(str(x))  # 변환 전의 자릿수
+
+    print(f'{r:2} | {x:{n}d}')  # {r:2} -> 최소 2칸 너비로 맞춰 출력
+    while x > 0:
+        print('  +' + (n + 2) * '-')
+        if x //r:   # 0이 아니면 True, 0이면 False
+            print(f'{r:2} | {x // r:{n}d} ... {x % r}')  # x를 r로 나눈 몫을 n칸 너비에 맞춰 출력, x를 r로 나눈 나머지 출력
+        else:
+            print(f'   {x // r:{n}d} ... {x % r}')
+        d += dchar[x % r]    # 해당하는 문자를 꺼내 결합
+        x //= r
+
+    return d[::-1]  # 역순 변환
+if __name__ == '__main__':
+    print('10진수를 n진수 변환')
+
+    while True:
+        while True:  # 음이 아닌 정수 입력 받음
+            no = int(input('음이 아닌 변환할 값 입력'))
+            if no > 0:
+                break
+
+        while True:  # 2~36진수 입력 받음
+            cd = int(input('어떤 진수로 변환할지'))
+            if 2 <=  cd <= 16:
+                break
+
+        print(f'{cd}진수 {no}값은 {card_conv(no, cd)}')
+
+        retry = input( "한번 더 ?(Y / N)")
+        if retry in {'N', 'n'}:
+            break
+```
+
+- print(f'{r:2} | {x:{n}d}')     {r:2} -> 최소 2칸 너비로 맞춰 출력
+- d 변수는 나머지를 역순으로 모아두는 역할
+
+함수 사이에 인수 주고받기
+
+```python
+# 1부터 n까지 정수 합 구하기
+
+def sum_1ton(n):
+    """1부터 n까지 정수의 합"""
+
+    s = 0
+    while n > 0:
+        s += n
+        n -= 1
+    return s
+
+x = int(input('x값 입력'))
+print(f'1부터 {x}까지 정수의 합은 {sum_1ton(x)}')
+```
+
+- 파이썬에서 매개변수에 실제 인수가 대입
+- 대입에서 복사되는 것은 값X, 참조하는 곳 → n과 x가 참조하는 곳은 같음
+- 매개변수 n값을 sum_1ton 함수 안에서 변경했지만 실제 인수 x 값 변경X(이뮤터블 타입이므로)
+- 함수 종료시 n이 참조하는 곳은 정수 0
+- 인수가 이뮤터블 → 매개변수의 값을 변경해도 실제 인수에는 영향X(다른 객체 생성함)
+- 인수가 뮤터블 → 매개변수의 값 변경, 실제 인수 값 변경(다른 객체 생성X)
+
+```python
+# 리스트에서 임의의 원솟값 업데이트
+
+def change(lst, idx, val):
+    """lst[idx]의 값을 val로 업데이트"""
+    lst[idx] = val
+
+x = [11, 22, 33, 44, 55, 66]
+print('x =', x)
+
+index = int(input('업데이트 할 인덱스 선택'))
+value = int(input('새로운 값'))
+
+change(x, index, value)
+print(f'x = {x}')
+```
+
+- 인수가 뮤터블 하면 함수 안에서 업데이트한 값이 원래 호출한 곳으로 전달됨
