@@ -1,0 +1,28 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/68935
+
+
+
+def solution(n):
+    answer = []
+    result = 0
+    while n > 0:
+        answer.append(n % 3)
+        n //= 3               # n= 45 answer = [0, 0, 2, 1]
+        
+    answer.reverse()          # answer = [1, 2, 0, 0]
+    for i in range(len(answer)):
+        result += answer[i] * (3**i)
+    return result
+
+
+def solution(n):
+    answer = ''
+    result = 0
+    while n > 0:
+        answer = str(n % 3) + answer  # '1200'
+        n //= 3           
+        
+
+    for i in range(len(answer)):
+        result += int(answer[i]) * (3**i)
+    return result
