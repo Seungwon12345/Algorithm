@@ -2,13 +2,14 @@
 
 def solution(name, yearning, photo):
     answer = []
-    for i in photo :    
+    for i in photo:  # i = 2인 경우   ["kon", "kain", "may", "coni"] 리스트에 접근
         score = 0
-        for j in i :
-            k = 0
-            for n in name :
-                if j == n :
+        for j in i:  # ["kon", "kain", "may", "coni"] 원소에 접근
+            k = 0  # ["kon", "kain", "may", "coni"] 원소 값과 ["may", "kein", "kain", "radi"] 원소 값이 다른 경우 증가됨 j값이 kain일떄 n값이 may인 경우
+            for n in name:
+                if j == n:
                     score += yearning[k]
+                    break
                 k += 1
             
 
@@ -16,3 +17,5 @@ def solution(name, yearning, photo):
                     
 
     return answer
+
+print(solution(["may", "kein", "kain", "radi"],[5, 10, 1, 3],[["may", "kein", "kain", "radi"],["may", "kein", "brin", "deny"], ["kon", "kain", "may", "coni"]]))
