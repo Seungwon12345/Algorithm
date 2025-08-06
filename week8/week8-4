@@ -1,0 +1,17 @@
+# https://www.acmicpc.net/problem/1543
+
+s = input()
+n = input()
+count = 0
+i = 0
+
+while i <= len(s)-len(n): # 처음에 for i in range(len(s))으로 함
+
+    if s[i:i+len(n)] == n:  s[0:4] aba = aba
+        count += 1
+        i += len(n)
+
+    else:
+        i += 1
+    
+print(count)
