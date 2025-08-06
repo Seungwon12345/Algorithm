@@ -1,0 +1,21 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42626
+
+def solution(scoville, K):
+    count = 0
+
+    while True:
+        scoville.sort()
+        
+        if scoville[0] >= K:
+            return count
+        
+        if len(scoville) < 2:
+            return -1
+        
+        mix_scoville = scoville[0] + scoville[1]*2
+        scoville.append(mix_scoville)
+        
+        del scoville[0:2]
+        count += 1
+            
+    return count
