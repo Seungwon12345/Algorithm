@@ -1,0 +1,16 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12930
+
+def solution(s):
+    answer = []
+    n_s = s.split(' ')    # 공백기준으로 단어 잘라서 하려고 ["try", "hello", "world"]
+    
+    for i in n_s:  # "try"
+        for j in range(len(i)):  # "try"
+            if j % 2 == 0: # 짝수 인덱스 번쨰 자리
+                answer.append(i[j].upper()) # T    Y   ['T', 'r', 'Y']
+                
+            else:
+                answer.append(i[j].lower())  # r
+        answer.append(' ') # 안하니까 단어가 다 붙어 나와서 TrYHeLlOWoRlD
+    answer.pop() # pop()에 비워놓으면 가장 마지막 인덱스 삭제함 마지막 공백 삭제
+    return ''.join(answer) # 리스트를 문자열로 변환해줌 ->  ''.join(리스트명)
