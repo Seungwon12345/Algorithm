@@ -1,0 +1,17 @@
+# https://www.acmicpc.net/problem/34032
+
+n = int(input('팀원 수 입력'))
+s = input('팀원 수에 맞게 O, X 입력')
+count = 0
+
+for i in range(len(s)):
+
+    if s[i] == 'O':  # s.count로도 쓸 수 있음
+        count += 1
+    
+if count >= (n + 1) // 2: #  int(n // 2) +1, (n // 2) + 1 해봤는데 안됌 과반수 이상
+    answer = 'Yes'
+else:
+    answer = 'No'
+
+print(answer)    
