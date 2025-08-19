@@ -9,12 +9,31 @@ while True:
         break
     a.append(n) # a = ['120', '5611', '100'] str(문자열) 형태로 들어옴
 
-for i in a: # '120'
+for i in a: # '120'2
     b = [] # 반복문 돌떄마다 초기화(너비값 넣어주려고)
     total = 0 # 반복문 돌때마다 초기화
-    for k in i: # '1'
+    for k in i: # '1'2
         if k in number: # '1' 이 딕셔너리에 있으면
             b.append(number.get(k)) #  2 , k 값에 맞는 value 값을 b에 추가 b = [2, 3, 4]
 
     total += sum(b) + 2 + (len(b)-1)*1 # total = 9 + 2 + 2 = 13
     print(total) # 13 
+
+
+# number = {'0':4, '1':2, '2':3, '3':3, '4':3, '5':3, '6':3, '7':3, '8':3, '9':3}
+# a = []
+# b = []
+# sum = 0
+# while True:
+#     n = int(input())
+#     if n == '0':
+#         break
+#     a.append(n)
+
+# for i in a:
+#     if i in number:
+#         b.append(number.get('i'))
+
+# for j in b:
+#     sum += j
+# sum + 2 + (len(b)+1)*1
