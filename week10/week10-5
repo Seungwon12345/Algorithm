@@ -1,0 +1,54 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42885
+
+def solution(people, limit):
+    answer = 0 # 보트 수
+    people.sort() 
+    i = 0 # 가벼운 사람(i=0, 50)
+    j = len(people)-1 # 무거운 사람(j=3, 80)
+    
+    for _ in range(len(people)): # 인덱스 번호를 직접 제어하려고 [70, 50, 80, 50]
+        if i > j:   # [50, 50, 70, 80] 
+            break
+        if people[i] + people[j] <= limit: # 50 + 80 > 100 (X)/ 두명 타는 경우
+            i += 1                         # 50 + 70 > 100 (X) / 50 + 50 <= 100 (O)
+            j -= 1
+        else:     # 한명 타는 경우
+            j -= 1
+        answer += 1
+    return answer
+
+
+
+
+
+
+
+# def solution(people, limit):
+#     answer = 0 # 보트 수
+#     people.sort()
+#     i = 0 # 사람의 인덱스 번호
+    
+#     for _ in range(len(people)): # _ 쓴거는 i가 1, 2 증가시키도록 직접 하려고
+#         if i >= len(people):  # i가 범위 벗어나는지 
+#             break
+            
+#         if i+1 < len(people) and people[i] + people[i+1] <= limit: # 두명 이 한 보트에 탈 수 있는지 검사 하고 두 합이 limit보다 작거나 같은지 
+#             i += 2  # 두명이니까
+#         else:
+#             i += 1 
+#         answer += 1
+        
+#     return answer 
+
+
+# def solution(people, limit):
+#     people.sort()
+#     answer = 0
+    
+#     for i in range(len(people)-1):
+#         if people[i] + people[i+1] <= limit:
+#             answer += 1
+#         elif people[i] >= 50:
+#             answer += 1
+        
+#     return answer
