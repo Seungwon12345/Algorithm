@@ -1,0 +1,15 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12951
+
+def solution(s):
+    answer = []
+    s_p = s.split(' ')
+    for i in s_p:
+        for j in range(len(i)):
+            if j == 0:
+                answer.append(i[j].upper())
+            else:
+                answer.append(i[j].lower())
+            
+        answer.append(' ')
+    answer.pop()
+    return ''.join(answer)
