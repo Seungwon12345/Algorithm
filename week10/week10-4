@@ -1,0 +1,21 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42577
+
+def solution(phone_book):
+    phone_book.sort() # 숫자 순서 대로 정렬됨 ["119", "1195524421","97674223"] 단순하게 119가 뒤 숫자 119에 들어있으면 좋겠어서 
+    for i in range(len(phone_book)-1): # 마지막까지 가면 비교할게 없어져서 -1 함
+        if phone_book[i+1][:len(phone_book[i])] == phone_book[i]: # ["119", "1195524421", "97674223"] 119랑 119 비교하려고 슬라이싱
+            return False
+    else:
+          return True   
+    
+
+
+
+# def solution(phone_book):
+#     for i in range(len(phone_book)-1):
+#         if phone_book[i] in phone_book[i+1] or phone_book[i+1] in phone_book[i]:
+#             return False
+#     else:
+#           return True  
+#  딱 한가지 경우만 안넘어감(119, 5119 이런경우는 접두어가 안되는데 이 로직은 저 경우도 포함함)
+    
