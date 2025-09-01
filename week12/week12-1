@@ -1,12 +1,10 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/120853
-
 def solution(s):
     answer = 0
-    S = s.split(' ')  # 공백 기준으로 나눔
-    for i in range(len(S)):
+    S = s.split(' ')  # 공백 기준으로 나누어 리스트 만듬 ["1","2","Z","3"]
+    for i in range(len(S)): 
         if S[i] != "Z":
-            answer += int(S[i])
-        else:
+            answer += int(S[i]) # 1 + 2 - 2 + 3
+        else:  # 1 + 2 - 2
             answer -= int(S[i-1]) # 직전 숫자 빼기
             
     return answer
