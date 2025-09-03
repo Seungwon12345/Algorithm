@@ -1,0 +1,22 @@
+# https://www.acmicpc.net/problem/10773
+
+k = int(input())
+n = []
+
+for i in range(k):
+    a = int(input())
+    if a == 0:
+        n.pop()
+    else:
+        n.append(a)
+print(sum(n))
+
+
+
+
+
+# https://school.programmers.co.kr/learn/courses/30/lessons/120922
+
+# def solution(M, N):
+#     answer = M * N - 1
+#     return answer
