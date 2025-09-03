@@ -1,0 +1,10 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12941
+
+def solution(A,B):
+    answer = 0
+    n_A = sorted(A)
+    n_B = sorted(B, reverse=True)  # sort 로 했었는데 Nontype 뜸
+    
+    for i in range(len(A)):
+        answer += n_A[i] * n_B[i]
+    return answer
