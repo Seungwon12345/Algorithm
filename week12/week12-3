@@ -1,0 +1,31 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/138476
+
+def solution(k, tangerine): 
+    answer = 0 # {key: value for ...} key => 딕셔너리 키 값, value => 딕셔너리 value 값, for 반복문
+    count_dict = {key: tangerine.count(key) for key in tangerine} # 귤 크기별로 갯수를 세서 딕셔너리 만듬
+    # count_dict = {1:1, 2:2, 3:2, 4:1, 5:2}
+    count = list(count_dict.values()) # 딕셔너리 value값으로 리스트 만듬 [1, 2, 2, 1, 2]
+    count.sort(reverse=True) # 내림차순 [2, 2, 2, 1, 1]
+    
+    for i in count:
+        k -= i # 6-2 / 4-2 / 2-2
+        answer += 1 # 종류 수 1+1+1
+        if k <= 0:
+            break
+    return answer
+
+# 그리디 알고리즘 
+from collections import Counter
+
+
+def solution(k, tangerine):
+    answer = 0
+    dic = Counter(tangerine) # 귤 크기별로 갯수 구해서 딕셔너리 만듬 [1, 3, 2, 5, 4, 5, 2, 3] -> {5: 2, 3: 2, 2: 2, 1: 1, 4: 1}
+
+    for i in dic.most_common(): # 빈도수가 높은 순서대로(크기, 개수) [(5, 2), (3, 2), (2, 2), (1, 1), (4, 1)]
+        answer += 1 # i=0, (5,2)
+        k -= i[1] # 6-2
+        if k <= 0:
+            break
+
+    return answer
